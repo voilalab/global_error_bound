@@ -8,9 +8,12 @@ This repository contains the code for reproducing the main experiments in the pa
  
 ### System
  
-- NVIDIA GPU. All experiments in the paper were conducted on an NVIDIA RTX A6000 (48 GB VRAM); memory usage was not a limiting constraint.
+- NVIDIA GPU with compute capability ≥ 6.1. All experiments in the paper were conducted on an NVIDIA RTX A6000 (48 GB VRAM); memory usage was not a limiting constraint.
+- NVIDIA Driver compatible with your CUDA version
 - A working CUDA toolchain compatible with the installed PyTorch and JAX builds.
-- Linux environment with Python ≥ 3.9.
+- Linux or WSL2 environment.
+- Conda (Anaconda or Miniconda).
+
 ### Frameworks
  
 Following Appendix D.2 of the paper:
@@ -19,6 +22,16 @@ Following Appendix D.2 of the paper:
 - **JAX** — used for the radiance-field (NeRF) experiments.
 Standard Python scientific-computing dependencies (NumPy, Matplotlib, Jupyter) are required to run the notebooks and generate figures.
  
+### Recommended Version for Compatibility
+
+| Library       | Recommended Version |
+|---------------|---------------------|
+| Python        | 3.13                |
+| PyTorch       | 2.9.x.              |
+| CUDA Toolkit  | 12.2                |
+| Jax           | 0.9.0               |
+| gcc / g++     | 9–11 (for tiny-cuda-nn) |
+
 ---
 
 ## Repository Structure
