@@ -5,10 +5,11 @@ import math
 
 CS = {
     'FFN': 1.4,
-    'Instant-NGP': 1.0,
-    'GA-Planes': 2.0,
+    'Instant-NGP': 0.9,
+    'GA-Planes': 4.2,
     'Grid': 4.5,
 }
+
 TEST_IDX = 10
 
 def max_pairwise_l2_distance(arrays):
