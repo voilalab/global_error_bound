@@ -10,6 +10,14 @@ CS = {
     'Grid': 4.5,
 }
 
+CS_NERF = {
+    'FFN': 3.9,
+    'Instant-NGP': 2.2,
+    'GA-Planes': 4.4,
+    'Grid': 3.1,
+}
+
+
 TEST_IDX = 10
 
 def max_pairwise_l2_distance(arrays):
@@ -52,18 +60,6 @@ def plot_training_losses(outputs):
   plt.legend()
   plt.yscale('log')
   plt.grid(True)
-
-def plot_error_for_convexity(gt, outputs, params, param, iters, seed=0, model_name="model"):
-  flattened_gt = gt.flatten()
-  optimal_errors = []
-  for i, (key, output) in enumerate(outputs.items()):
-    optimal_errors.append(np.linalg.norm(flattened_gt - output['best_pred'].flatten()))
-  plt.figure(figsize=(10,8))
-  plt.plot(params, optimal_errors)
-  plt.xlabel(param)
-  plt.title(f'Converged error after {iters} iterations')
-  plt.ylabel("Error")
-  plt.savefig(f"plots/{model_name}/{model_name}_{param}_{seed}.png")
 
 def plot_error_upper_bound_without_optimization_gap(gt, outputs, d_star, params, param, b=5, save_tag="default", seed=0):
   assert b <= len(params), f"b={b} must be less than or equal to number of params={len(params)}"
@@ -178,7 +174,6 @@ def compute_model_size(model_name, model_args, n_dims=2):
       for l in range(L):
           N_l = math.floor(N_0 * (b**l))
           num_hash_params += min(2**T, (N_l)**n_dims) 
-      # print(f'MLP params: {num_mlp_params}, Hash params: {F * num_hash_params}')
       return num_mlp_params + F * num_hash_params
     elif model_name == "ffn_eta":
       p, l, w = model_args['mapping_size'], model_args['num_layers'], model_args['width']
