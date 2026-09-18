@@ -6,8 +6,8 @@ import math
 CS = {
     'FFN': 1.4,
     'Instant-NGP': 0.9,
-    'GA-Planes': 4.2,
-    'Grid': 4.5,
+    'GA-Planes': 4.6,
+    'Grid': 4.3,
 }
 
 CS_NERF = {
@@ -135,19 +135,19 @@ def plot_error_heatmaps(gt, outputs, zoom_dim=None, model_name="FFN"):
     axes[0].axis('off')
 
     axes[1].imshow(small_pred_crop, cmap='gray', interpolation='nearest')
-    axes[1].set_title('Prediction from small model')
+    axes[1].set_title('Small Model Prediction')
     axes[1].axis('off')
 
     axes[2].imshow(large_pred_crop, cmap='gray', interpolation='nearest')
-    axes[2].set_title('Prediction from large model')
+    axes[2].set_title('Large Model Prediction')
     axes[2].axis('off')
 
     heatmap1 = axes[3].imshow(model_difference, cmap='viridis', interpolation='nearest', vmin=vmin, vmax=vmax)
-    axes[3].set_title('|small_pred − large_pred|')
+    axes[3].set_title('Predicted Error')
     axes[3].axis('off')
 
     heatmap2 = axes[4].imshow(actual_error, cmap='viridis', interpolation='nearest', vmin=vmin, vmax=vmax)
-    axes[4].set_title('Actual Error  |small_pred − ground_truth|')
+    axes[4].set_title('Actual Error')
     axes[4].axis('off')
     
     # fig.colorbar(heatmap2, ax=axes[4], fraction=0.04, pad=0.02)

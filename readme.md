@@ -27,7 +27,7 @@ Standard Python scientific-computing dependencies (NumPy, Matplotlib, Jupyter) a
 | Library       | Recommended Version |
 |---------------|---------------------|
 | Python        | 3.13                |
-| PyTorch       | 2.9.x.              |
+| PyTorch       | 2.9.x               |
 | CUDA Toolkit  | 12.2                |
 | Jax           | 0.9.0               |
 | gcc / g++     | 9–11 (for tiny-cuda-nn) |
